@@ -1,25 +1,26 @@
 name: DelDropItems
-version: 1.0
+version: 1.0.1
 main: plugin.DelDropItems.Main
-api-version: 1.20
+api-version: 1.16
 commands:
   ddi:
-    description: "Основная команда плагина."
+    description: "Main command of the plugin."
     usage: "/ddi <subcommand>"
     aliases: [ "delDropItems" ]
     permission: "delDropItems.use"
-    permission-message: "У вас нет прав на использование этой команды."
+    permission-message: "You do not have permission to use this command."
     subcommands:
       reload:
-        description: "Перезагружает конфигурацию плагина."
+        description: "Reloads the plugin configuration."
         usage: "/ddi reload"
       help:
-        description: "Показывает список команд плагина."
+        description: "Displays the list of plugin commands."
         usage: "/ddi help"
 permissions:
   delDropItems.reload:
-    description: "Разрешение на перезагрузку конфигурации плагина."
+    description: "Permission to reload the plugin configuration."
     default: op
   delDropItems.help:
-    description: "Разрешение на просмотр команд плагина."
+    description: "Permission to view the plugin commands."
     default: op
+

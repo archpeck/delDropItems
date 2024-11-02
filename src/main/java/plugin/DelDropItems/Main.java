@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.UUID;
 
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
+
+
+
 public class Main extends JavaPlugin implements Listener {
 
     private final HashMap<UUID, Long> itemSpawnTime = new HashMap<>();
@@ -34,19 +42,28 @@ public class Main extends JavaPlugin implements Listener {
     private long broadcastInterval;
     private String broadcastMessage;
     private boolean broadcastMessageAllow;
+    private String languageConfig;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         loadConfigValues();
+        loadMessages();
 
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "\n\n=== Плагин DelDropItems запущен ==="));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Версия: &f1.0"));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Автор: &f"));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Инициализация завершена!"));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "=== Доступные команды ==="));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "/ddi reload - Перезагрузить конфигурацию плагина."));
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', "/ddi help - Показать список команд.\n\n"));
+        File messagesFolder = new File(getDataFolder(), "messages");
+        if (!messagesFolder.exists()) {
+            messagesFolder.mkdir();
+        }
+
+
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "=== DelDropItems Plugin Enabled ==="));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Version: &f1.0"));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Author: &f"));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "Initialization completed!"));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "=== Available Commands ==="));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "/ddi reload - Reload the plugin configuration."));
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', "/ddi help - Show the list of commands.\n\n"));
+
 
         File logDir = new File(getDataFolder(), "logs");
         if (!logDir.exists()) {
@@ -83,10 +100,9 @@ public class Main extends JavaPlugin implements Listener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                if(reloadMessageAllow) {
+                if (broadcastMessageAllow && broadcastMessage != null && !broadcastMessage.isEmpty()) {
                     Bukkit.broadcastMessage(broadcastMessage);
                 }
-
             }
         }.runTaskTimer(this, 0L, broadcastInterval * 20L);
     }
@@ -94,14 +110,44 @@ public class Main extends JavaPlugin implements Listener {
     private void loadConfigValues() {
         FileConfiguration config = getConfig();
         removalTime = config.getLong("item-removal-time");
-        dropMessage = config.getString("drop-message");
-        reloadMessage = config.getString("reload-message");
         dropMessageAllow = config.getBoolean("drop-message-allow");
         broadcastInterval = config.getLong("broadcast-interval");
-        broadcastMessage = config.getString("broadcast-message");
         broadcastMessageAllow = config.getBoolean("broadcast-message-allow");
         reloadMessageAllow = config.getBoolean("reload-message-allow");
+        languageConfig = config.getString("language");
     }
+
+    private void loadMessages() {
+        String language = getConfig().getString("language", "en");
+        File messagesFolder = new File(getDataFolder(), "messages");
+        File messageFile = new File(messagesFolder, "messages_" + language + ".yml");
+
+        // Проверка и создание папки, если она отсутствует
+        if (!messagesFolder.exists()) {
+            messagesFolder.mkdirs(); // Создание папки
+        }
+
+        // Проверка и создание файла, если он отсутствует
+        if (!messageFile.exists()) {
+            try (InputStream input = getResource("messages_" + language + ".yml")) {
+                if (input != null) {
+                    Files.copy(input, messageFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } else {
+                    getLogger().severe("Default message file not found in resources!");
+                }
+            } catch (IOException e) {
+                getLogger().severe("Could not create message file: " + e.getMessage());
+            }
+        }
+
+        // Загрузка конфигурации сообщений
+        YamlConfiguration messages = YamlConfiguration.loadConfiguration(messageFile);
+        broadcastMessage = messages.getString("broadcast-message", "[§aDelDropItems§f] §cItem removal will occur in §l5 minutes§r!");
+        reloadMessage = messages.getString("reload-message", "[§aDelDropItems§f] §ePlugin configuration has been successfully reloaded!");
+        dropMessage = messages.getString("drop-message", "[§aDelDropItems§f] §eYou dropped: %item_name%!");
+    }
+
+
 
     @EventHandler
     public void onPlayerDropItem(PlayerDropItemEvent event) {
@@ -123,7 +169,7 @@ public class Main extends JavaPlugin implements Listener {
 
     private void logItemRemoval(String playerName, String itemName) {
         int count = playerItemCount.getOrDefault(playerName, 0);
-        String logMessage = String.format("[%s] Предмет: %s x%d, выброшенный игроком: %s был удалён.",
+        String logMessage = String.format("[%s] Item: %s x%d, dropped by player: %s has been removed.",
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                 itemName,
                 count,
@@ -147,15 +193,15 @@ public class Main extends JavaPlugin implements Listener {
         if (command.getName().equalsIgnoreCase("ddi")) {
             if (args.length == 0) {
                 // Вывод списка подкоманд
-                sender.sendMessage("§6=== Доступные команды ===");
-                sender.sendMessage("§a/ddi reload - Перезагрузить конфигурацию плагина.");
-                sender.sendMessage("§a/ddi help - Показать список команд.");
+                sender.sendMessage("§6=== Available Commands ===");
+                sender.sendMessage("§a/ddi reload - Reload the plugin configuration.");
+                sender.sendMessage("§a/ddi help - Show the list of commands.");
                 return true;
             }
 
             if (args[0].equalsIgnoreCase("reload")) {
                 if (!sender.hasPermission("delDropItems.reload")) {
-                    sender.sendMessage("§cУ вас нет разрешения на эту команду.");
+                    sender.sendMessage("§cYou do not have permission for this command.");
                     return true;
                 }
                 reloadConfig();
@@ -166,12 +212,12 @@ public class Main extends JavaPlugin implements Listener {
 
             if (args[0].equalsIgnoreCase("help")) {
                 if (!sender.hasPermission("delDropItems.help")) {
-                    sender.sendMessage("§cУ вас нет разрешения на эту команду.");
+                    sender.sendMessage("§cYou do not have permission for this command.");
                     return true;
                 }
-                // Вывод помощи
-                sender.sendMessage("§6=== Помощь по командам ===");
-                sender.sendMessage("§a/ddi reload - Перезагрузить конфигурацию плагина.");
+                // Display help
+                sender.sendMessage("§6=== DelDropItems Commands Help ===");
+                sender.sendMessage("§a/ddi reload - Reload the plugin configuration.");
                 return true;
             }
         }
@@ -180,9 +226,9 @@ public class Main extends JavaPlugin implements Listener {
 
 
     private void showHelp(CommandSender sender) {
-        sender.sendMessage("§6=== Команды плагина DelDropItems ===");
-        sender.sendMessage("§a/ddi reload - Перезагрузить конфигурацию плагина.");
-        sender.sendMessage("§a/ddi help - Показать этот список команд.");
+        sender.sendMessage("§6=== DelDropItems Plugin Commands ===");
+        sender.sendMessage("§a/ddi reload - Reload the plugin configuration.");
+        sender.sendMessage("§a/ddi help - Show this help.");
         sender.sendMessage("§6===============================");
     }
 
