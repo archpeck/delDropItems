@@ -5,7 +5,7 @@
 
   <groupId>plagin.DelDropItems</groupId>
   <artifactId>DelDropItems</artifactId>
-  <version>1.0.1-beta-1.16.5-1.21.1</version>
+  <version>1.0.2-beta-1.16.5-1.21.3</version>
   <packaging>jar</packaging>
 
   <name>DelDropItems</name>
@@ -13,7 +13,7 @@
 
   <properties>
     <spigot.version>1.16</spigot.version>
-    <spigot.max.version>1.21.1</spigot.max.version>
+    <spigot.max.version>1.21.3</spigot.max.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>

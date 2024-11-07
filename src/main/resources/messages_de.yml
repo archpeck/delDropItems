@@ -1,0 +1,19 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cDas Entfernen von geworfenen Gegenständen erfolgt in §l5 Minuten nach dem Wurf§r !" # Broadcast-Nachricht für das Entfernen von Gegenständen
+
+reload-message: "[§aDelDropItems§f] §eDie Plugin-Konfiguration wurde erfolgreich neu geladen!" # Nachricht für das Neuladen des Plugins
+
+drop-message: "[§aDelDropItems§f] §eDu hast folgendes geworfen: %item_name%!" # Nachricht für den Wurf eines Gegenstands durch den Spieler

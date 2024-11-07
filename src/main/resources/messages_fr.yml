@@ -1,0 +1,19 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cLa suppression des objets jetés aura lieu dans §l5 minutes après le largage§r !" # Message de diffusion pour la suppression d'objet
+
+reload-message: "[§aDelDropItems§f] §eLa configuration du plugin a été rechargée avec succès !" # Message de rechargement du plugin
+
+drop-message: "[§aDelDropItems§f] §eVous avez jeté : %item_name% !" # Message pour un objet jeté par le joueur

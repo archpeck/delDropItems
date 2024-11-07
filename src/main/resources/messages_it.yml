@@ -1,0 +1,19 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cLa eliminación de los objetos tirados se realizará en §l5 minutos después de tirarlos§r !" # Mensaje de difusión para la eliminación de objetos
+
+reload-message: "[§aDelDropItems§f] §eLa configuración del plugin se ha recargado con éxito!" # Mensaje de recarga del plugin
+
+drop-message: "[§aDelDropItems§f] §eHas tirado: %item_name%!" # Mensaje para el objeto tirado por el jugador
