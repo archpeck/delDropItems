@@ -26,14 +26,11 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
-
-
-
 public class Main extends JavaPlugin implements Listener {
 
     private final HashMap<UUID, Long> itemSpawnTime = new HashMap<>();
     private final HashMap<UUID, String> itemOwners = new HashMap<>();
-    private final HashMap<String, Integer> playerItemCount = new HashMap<>(); // Счетчик выброшенных предметов
+    private final HashMap<UUID, Integer> itemCounts = new HashMap<>();
     private long removalTime;
     private String dropMessage;
     private String reloadMessage;
@@ -85,7 +82,7 @@ public class Main extends JavaPlugin implements Listener {
                         String playerName = itemOwners.get(itemId);
                         String itemName = item.getItemStack().getType().name();
                         item.remove();
-                        logItemRemoval(playerName, itemName); // Логируем удаление
+                        logItemRemoval(playerName, itemName, itemId); // Передаем itemId
                         itemsToRemove.put(itemId, playerName);
                     }
                 }
@@ -93,6 +90,7 @@ public class Main extends JavaPlugin implements Listener {
                 for (UUID itemId : itemsToRemove.keySet()) {
                     itemSpawnTime.remove(itemId);
                     itemOwners.remove(itemId);
+                    itemCounts.remove(itemId); // Удаляем из счетчика
                 }
             }
         }.runTaskTimer(this, 0L, 20L);
@@ -122,12 +120,10 @@ public class Main extends JavaPlugin implements Listener {
         File messagesFolder = new File(getDataFolder(), "messages");
         File messageFile = new File(messagesFolder, "messages_" + language + ".yml");
 
-        // Проверка и создание папки, если она отсутствует
         if (!messagesFolder.exists()) {
-            messagesFolder.mkdirs(); // Создание папки
+            messagesFolder.mkdirs();
         }
 
-        // Проверка и создание файла, если он отсутствует
         if (!messageFile.exists()) {
             try (InputStream input = getResource("messages_" + language + ".yml")) {
                 if (input != null) {
@@ -140,7 +136,6 @@ public class Main extends JavaPlugin implements Listener {
             }
         }
 
-        // Загрузка конфигурации сообщений
         YamlConfiguration messages = YamlConfiguration.loadConfiguration(messageFile);
         broadcastMessage = messages.getString("broadcast-message", "[§aDelDropItems§f] §cItem removal will occur in §l5 minutes§r!");
         reloadMessage = messages.getString("reload-message", "[§aDelDropItems§f] §ePlugin configuration has been successfully reloaded!");
@@ -159,22 +154,25 @@ public class Main extends JavaPlugin implements Listener {
             itemSpawnTime.put(itemId, System.currentTimeMillis());
             itemOwners.put(itemId, playerName);
 
-            // Увеличиваем счётчик для игрока
-            playerItemCount.put(playerName, playerItemCount.getOrDefault(playerName, 0) + 1);
+            // Сохраняем количество предметов в стаке
+            int count = droppedItem.getItemStack().getAmount();
+            itemCounts.put(itemId, count);
 
             String message = dropMessage.replace("%item_name%", droppedItem.getItemStack().getType().name());
             event.getPlayer().sendMessage(message);
         }
     }
 
-    private void logItemRemoval(String playerName, String itemName) {
-        int count = playerItemCount.getOrDefault(playerName, 0);
+    private void logItemRemoval(String playerName, String itemName, UUID itemId) {
+
+        int count = itemCounts.getOrDefault(itemId, 1);
+
         String logMessage = String.format("[%s] Item: %s x%d, dropped by player: %s has been removed.",
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
                 itemName,
                 count,
                 playerName
-                );
+        );
 
         File logFile = new File(getDataFolder() + "/logs", "item_removal_log.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(logFile, true))) {
@@ -184,15 +182,14 @@ public class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
 
-        // Сбрасываем счётчик для игрока
-        playerItemCount.put(playerName, 0);
+        itemCounts.remove(itemId);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("ddi")) {
             if (args.length == 0) {
-                // Вывод списка подкоманд
+
                 sender.sendMessage("§6=== Available Commands ===");
                 sender.sendMessage("§a/ddi reload - Reload the plugin configuration.");
                 sender.sendMessage("§a/ddi help - Show the list of commands.");
@@ -215,10 +212,17 @@ public class Main extends JavaPlugin implements Listener {
                     sender.sendMessage("§cYou do not have permission for this command.");
                     return true;
                 }
-                // Display help
                 sender.sendMessage("§6=== DelDropItems Commands Help ===");
                 sender.sendMessage("§a/ddi reload - Reload the plugin configuration.");
                 return true;
+            }
+
+            if(args[0].equalsIgnoreCase("view-logs")) {
+                if (!sender.hasPermission("delDropItems.help")) {
+                    sender.sendMessage("§cYou do not have permission for this command.");
+                    return true;
+                }
+
             }
         }
         return false;
