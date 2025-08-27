@@ -82,7 +82,7 @@ public class Main extends JavaPlugin implements Listener {
                         String playerName = itemOwners.get(itemId);
                         String itemName = item.getItemStack().getType().name();
                         item.remove();
-                        logItemRemoval(playerName, itemName, itemId); // Передаем itemId
+                        logItemRemoval(playerName, itemName, itemId);
                         itemsToRemove.put(itemId, playerName);
                     }
                 }
@@ -90,7 +90,7 @@ public class Main extends JavaPlugin implements Listener {
                 for (UUID itemId : itemsToRemove.keySet()) {
                     itemSpawnTime.remove(itemId);
                     itemOwners.remove(itemId);
-                    itemCounts.remove(itemId); // Удаляем из счетчика
+                    itemCounts.remove(itemId);
                 }
             }
         }.runTaskTimer(this, 0L, 20L);
@@ -154,7 +154,6 @@ public class Main extends JavaPlugin implements Listener {
             itemSpawnTime.put(itemId, System.currentTimeMillis());
             itemOwners.put(itemId, playerName);
 
-            // Сохраняем количество предметов в стаке
             int count = droppedItem.getItemStack().getAmount();
             itemCounts.put(itemId, count);
 
