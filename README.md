@@ -1,4 +1,8 @@
 # DelDropItems Plugin Documentation
+![Java](https://img.shields.io/badge/Java-17-red?style=flat)
+![Version](https://img.shields.io/badge/Version-v1.1.2-blue?style=flat)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.12+-green?style=flat)
+
 ## Overview
 
 The DelDropItems plugin is designed for Minecraft servers to manage the behavior of dropped items. It allows server administrators to set rules for how long items remain in the world after being dropped by players, broadcast messages to all players, and configure custom messages for various events.
