@@ -24,7 +24,7 @@ The configuration file, `config.yml`, includes several options:
     
 - **drop-message-allow**: This boolean setting determines whether messages are sent when an item is dropped. The default value is `true`.
 
-- **distance-player-to-object: 25 # Distance where there should be no players
+- **distance-player-to-object**: 25 # Distance where there should be no players
  
 - **broadcast-interval**: An integer specifying how often (in seconds) messages are broadcasted to all players. The default value is `60` seconds.
     
