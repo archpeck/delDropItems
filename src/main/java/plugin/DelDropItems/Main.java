@@ -2,11 +2,13 @@ package plugin.DelDropItems;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -39,7 +41,19 @@ public class Main extends JavaPlugin implements Listener {
     private long broadcastInterval;
     private String broadcastMessage;
     private boolean broadcastMessageAllow;
+    private long distancePlayerToObject;
     private String languageConfig;
+
+    private void loadConfigValues() {
+        FileConfiguration config = getConfig();
+        removalTime = config.getLong("item-removal-time");
+        dropMessageAllow = config.getBoolean("drop-message-allow");
+        broadcastInterval = config.getLong("broadcast-interval");
+        broadcastMessageAllow = config.getBoolean("broadcast-message-allow");
+        reloadMessageAllow = config.getBoolean("reload-message-allow");
+        languageConfig = config.getString("language");
+        distancePlayerToObject = config.getLong("distance-player-to-object");
+    }
 
     @Override
     public void onEnable() {
@@ -87,6 +101,31 @@ public class Main extends JavaPlugin implements Listener {
                     }
                 }
 
+                for (HashMap.Entry<UUID, Long> entry : itemSpawnTime.entrySet()) {
+                    UUID itemId = entry.getKey();
+                    String playerName = itemOwners.get(itemId);
+                    for(World world : Bukkit.getWorlds()) {
+                        for (Item item : world.getEntitiesByClass(Item.class)) {
+                            if (item.getTicksLived() < removalTime) {
+                                continue;
+                            }
+                            boolean playerNearby = false;
+                            for (Player player : world.getPlayers()) {
+                                if (player.getLocation().distanceSquared(item.getLocation())
+                                        <= distancePlayerToObject * distancePlayerToObject) {
+                                    playerNearby = true;
+                                    break;
+                                }
+                            }
+                            if (!playerNearby) {
+                                logItemRemoval(playerName, item.getItemStack().getType().name(), itemId);
+                                item.remove();
+                            }
+                        }
+                    }
+                }
+
+
                 for (UUID itemId : itemsToRemove.keySet()) {
                     itemSpawnTime.remove(itemId);
                     itemOwners.remove(itemId);
@@ -103,16 +142,6 @@ public class Main extends JavaPlugin implements Listener {
                 }
             }
         }.runTaskTimer(this, 0L, broadcastInterval * 20L);
-    }
-
-    private void loadConfigValues() {
-        FileConfiguration config = getConfig();
-        removalTime = config.getLong("item-removal-time");
-        dropMessageAllow = config.getBoolean("drop-message-allow");
-        broadcastInterval = config.getLong("broadcast-interval");
-        broadcastMessageAllow = config.getBoolean("broadcast-message-allow");
-        reloadMessageAllow = config.getBoolean("reload-message-allow");
-        languageConfig = config.getString("language");
     }
 
     private void loadMessages() {
