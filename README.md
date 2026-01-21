@@ -23,7 +23,9 @@ The configuration file, `config.yml`, includes several options:
 - **item-removal-time**: This integer value specifies the time (in seconds) before dropped items are removed from the world. The default value is `60` seconds.
     
 - **drop-message-allow**: This boolean setting determines whether messages are sent when an item is dropped. The default value is `true`.
-    
+
+- **distance-player-to-object: 25 # Distance where there should be no players
+ 
 - **broadcast-interval**: An integer specifying how often (in seconds) messages are broadcasted to all players. The default value is `60` seconds.
     
 - **broadcast-message-allow**: A boolean that controls whether broadcasting messages is allowed. The default value is `true`.
