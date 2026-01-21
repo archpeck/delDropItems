@@ -28,7 +28,10 @@ drop-message-allow: true # Allowing the plugin to send messages about the player
 reload-message-allow: true # Allow the plugin to send a configuration reload message
 
 broadcast-message-allow: true # Allow the plugin to send automatic messages
+
 broadcast-interval: 300 # Interval in seconds between messages
+
+distance-player-to-object: 25 # Distance where there should be no players
 
 
 
@@ -38,3 +41,4 @@ broadcast-interval: 300 # Interval in seconds between messages
 
 
 item-removal-time: 300  # Time for item removal in seconds
+
