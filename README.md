@@ -2,7 +2,7 @@
 ![Java](https://img.shields.io/badge/Java-17-red?style=flat)
 ![Version](https://img.shields.io/badge/Version-v1.1.5-blue?style=flat)
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.12+-green?style=flat)
-![Spigot](https://img.shields.io/badge/Downloads-500+-yellow?style=flat)
+![Spigot](https://img.shields.io/badge/Downloads-600+-yellow?style=flat)
 
 ## Overview
 
