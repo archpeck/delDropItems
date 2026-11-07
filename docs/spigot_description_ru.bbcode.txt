@@ -21,7 +21,7 @@ DelDropItems автоматически удаляет предметы, леж�
 [B][SIZE=5]Требования[/SIZE][/B]
 
 [LIST]
-[*]Spigot или Paper (или их форк), Minecraft 1.12 и новее
+[*]Spigot или Paper (или их форк), Minecraft 1.17 и новее (более старые версии не поддерживаются)
 [*]Java 17 или новее
 [*]Другие плагины не нужны
 [/LIST]
@@ -89,12 +89,12 @@ disabled-worlds: [world_nether]
 [B][SIZE=4]Удаление[/SIZE][/B]
 
 [LIST]
-[*][B]item-removal-time[/B] — По умолчанию: [ICODE]300[/ICODE] — Сколько секунд предмет может лежать на земле до удаления.
+[*][B]item-removal-time[/B] — По умолчанию: [ICODE]300[/ICODE] — Сколько секунд предмет может лежать на земле до удаления. Минимум [ICODE]1[/ICODE].
 [*][B]only-player-dropped[/B] — По умолчанию: [ICODE]true[/ICODE] — [ICODE]true[/ICODE]: только предметы, выброшенные игроками (клавиша Q или вытащенные из инвентаря). [ICODE]false[/ICODE]: любые предметы, включая дроп с мобов, сломанных блоков и после смерти.
 [*][B]distance-player-to-object[/B] — По умолчанию: [ICODE]0[/ICODE] — Расстояние в блоках. Пока рядом с предметом (ближе этого значения) есть игрок, предмет [B]не[/B] удаляется. [ICODE]0[/ICODE] отключает проверку.
-[*][B]ignored-materials[/B] — По умолчанию: (empty) — Материалы, которые никогда не удаляются, например [ICODE][DIAMOND, NETHERITE_INGOT, SHULKER_BOX][/ICODE]. Используйте названия из списка [ICODE]Material[/ICODE] в Spigot. Неизвестные названия выводятся в консоль.
+[*][B]ignored-materials[/B] — По умолчанию: (пусто) — Материалы, которые никогда не удаляются, например [ICODE][DIAMOND, NETHERITE_INGOT, SHULKER_BOX][/ICODE]. Используйте названия из списка [ICODE]Material[/ICODE] в Spigot. Неизвестные названия выводятся в консоль.
 [*][B]ignore-named-items[/B] — По умолчанию: [ICODE]false[/ICODE] — [ICODE]true[/ICODE]: предметы с кастомным названием (например, переименованные на наковальне) никогда не удаляются.
-[*][B]disabled-worlds[/B] — По умолчанию: (empty) — Названия миров, где плагин ничего не делает, например [ICODE][world_nether, world_the_end][/ICODE]. Регистр важен.
+[*][B]disabled-worlds[/B] — По умолчанию: (пусто) — Названия миров, где плагин ничего не делает, например [ICODE][world_nether, world_the_end][/ICODE]. Регистр важен.
 [/LIST]
 
 [B][SIZE=4]Сообщения и журнал[/SIZE][/B]
@@ -123,7 +123,7 @@ disabled-worlds: [world_nether]
 Цветовые коды: используйте [ICODE]§[/ICODE] или [ICODE]&[/ICODE], например [ICODE]&a[/ICODE] для зелёного и [ICODE]&l[/ICODE] для жирного.
 
 [LIST]
-[*][B]prefix[/B] — Префикс перед ответами на команды
+[*][B]prefix[/B] — Префикс перед [ICODE]no-permission[/ICODE], [ICODE]unknown-command[/ICODE], [ICODE]clear-message[/ICODE] и [ICODE]logs-empty[/ICODE]. В [ICODE]broadcast-message[/ICODE], [ICODE]drop-message[/ICODE] и [ICODE]reload-message[/ICODE] префикс записан прямо в тексте, меняйте его там
 [*][B]broadcast-message[/B] — Периодическое напоминание — Плейсхолдеры: [ICODE]%minutes%[/ICODE], [ICODE]%seconds%[/ICODE]
 [*][B]drop-message[/B] — Сообщение игроку, выбросившему предмет — Плейсхолдеры: [ICODE]%item_name%[/ICODE]
 [*][B]reload-message[/B] — После [ICODE]/ddi reload[/ICODE]
@@ -159,7 +159,7 @@ disabled-worlds: [world_nether]
 Spigot/Paper по умолчанию удаляют предметы через 300 секунд, и их могут чистить другие плагины. Проверьте [ICODE]spigot.yml[/ICODE] и другие плагины очистки.
 
 [B]В консоли пишет «Unknown material».[/B]
-Название в [ICODE]ignored-materials[/ICODE] не существует в вашей версии Minecraft. Используйте названия Spigot в верхнем регистре, например [ICODE]NETHERITE_INGOT[/ICODE].
+Название в [ICODE]ignored-materials[/ICODE] не существует в вашей версии Minecraft. Регистр не важен ([ICODE]diamond[/ICODE] тоже подойдёт); сверьте написание со списком [ICODE]Material[/ICODE] в Spigot для вашей версии сервера, например [ICODE]NETHERITE_INGOT[/ICODE] есть только с 1.16.
 
 [B]Сообщения не на моём языке.[/B]
 Проверьте [ICODE]language[/ICODE] в [ICODE]config.yml[/ICODE] и выполните [ICODE]/ddi reload[/ICODE]. Если вы сменили язык после правки файла сообщений, файл нового языка создаётся отдельно: [ICODE]messages_<язык>.yml[/ICODE].
@@ -169,7 +169,7 @@ Spigot/Paper по умолчанию удаляют предметы через 
 
 [B][SIZE=5]Поддержка[/SIZE][/B]
 
-Нашли ошибку или есть идея? Создайте [URL='https://github.com/']issue на GitHub[/URL] или оставьте комментарий на странице Spigot. Укажите версию сервера, версию плагина и вывод консоли.
+Нашли ошибку или есть идея? Создайте [URL='https://github.com/archpeck/delDropItems/issues']issue на GitHub[/URL] или оставьте комментарий на странице Spigot. Укажите версию сервера, версию плагина и вывод консоли.
 
 [B][SIZE=5]Лицензия[/SIZE][/B]
 

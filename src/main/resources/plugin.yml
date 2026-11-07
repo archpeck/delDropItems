@@ -1,7 +1,7 @@
 name: DelDropItems
 version: 1.2.0
 main: plugin.DelDropItems.Main
-api-version: 1.13
+api-version: 1.17
 commands:
   ddi:
     description: "Main command of the plugin."

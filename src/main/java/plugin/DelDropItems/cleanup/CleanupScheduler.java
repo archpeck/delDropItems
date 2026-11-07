@@ -1,6 +1,7 @@
 package plugin.DelDropItems.cleanup;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -47,8 +48,15 @@ public class CleanupScheduler {
 
     private void broadcast() {
         String text = messages.get("broadcast-message", "");
-        if (!text.isEmpty()) {
-            Bukkit.broadcastMessage(messages.applyTime(text));
+        if (text.isEmpty()) {
+            return;
         }
+        String message = messages.applyTime(text);
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (!settings.isWorldDisabled(player.getWorld().getName())) {
+                player.sendMessage(message);
+            }
+        }
+        Bukkit.getConsoleSender().sendMessage(message);
     }
 }

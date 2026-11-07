@@ -2,7 +2,7 @@
 
 ![Java](https://img.shields.io/badge/Java-17-red?style=flat)
 ![Version](https://img.shields.io/badge/Version-v1.2.0-blue?style=flat)
-![Minecraft](https://img.shields.io/badge/Minecraft-1.12+-green?style=flat)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.17+-green?style=flat)
 
 [English](README.md) | [Русский](README_RU.md) <!--gh-->
 
@@ -24,7 +24,7 @@ DelDropItems автоматически удаляет предметы, леж�
 
 ## Требования
 
-- Spigot или Paper (или их форк), Minecraft 1.12 и новее
+- Spigot или Paper (или их форк), Minecraft 1.17 и новее (более старые версии не поддерживаются)
 - Java 17 или новее
 - Другие плагины не нужны
 
@@ -90,7 +90,7 @@ disabled-worlds: [world_nether]
 
 | Опция | По умолчанию | Описание |
 |---|---|---|
-| `item-removal-time` | `300` | Сколько секунд предмет может лежать на земле до удаления. |
+| `item-removal-time` | `300` | Сколько секунд предмет может лежать на земле до удаления. Минимум `1`. |
 | `only-player-dropped` | `true` | `true`: только предметы, выброшенные игроками (клавиша Q или вытащенные из инвентаря). `false`: любые предметы, включая дроп с мобов, сломанных блоков и после смерти. |
 | `distance-player-to-object` | `0` | Расстояние в блоках. Пока рядом с предметом (ближе этого значения) есть игрок, предмет **не** удаляется. `0` отключает проверку. |
 | `ignored-materials` | `[]` | Материалы, которые никогда не удаляются, например `[DIAMOND, NETHERITE_INGOT, SHULKER_BOX]`. Используйте названия из списка `Material` в Spigot. Неизвестные названия выводятся в консоль. |
@@ -122,7 +122,7 @@ disabled-worlds: [world_nether]
 
 | Ключ | Для чего | Плейсхолдеры |
 |---|---|---|
-| `prefix` | Префикс перед ответами на команды | |
+| `prefix` | Префикс перед `no-permission`, `unknown-command`, `clear-message` и `logs-empty`. В `broadcast-message`, `drop-message` и `reload-message` префикс записан прямо в тексте, меняйте его там | |
 | `broadcast-message` | Периодическое напоминание | `%minutes%`, `%seconds%` |
 | `drop-message` | Сообщение игроку, выбросившему предмет | `%item_name%` |
 | `reload-message` | После `/ddi reload` | |
@@ -157,7 +157,7 @@ disabled-worlds: [world_nether]
 Spigot/Paper по умолчанию удаляют предметы через 300 секунд, и их могут чистить другие плагины. Проверьте `spigot.yml` и другие плагины очистки.
 
 **В консоли пишет «Unknown material».**
-Название в `ignored-materials` не существует в вашей версии Minecraft. Используйте названия Spigot в верхнем регистре, например `NETHERITE_INGOT`.
+Название в `ignored-materials` не существует в вашей версии Minecraft. Регистр не важен (`diamond` тоже подойдёт); сверьте написание со списком `Material` в Spigot для вашей версии сервера, например `NETHERITE_INGOT` есть только с 1.16.
 
 **Сообщения не на моём языке.**
 Проверьте `language` в `config.yml` и выполните `/ddi reload`. Если вы сменили язык после правки файла сообщений, файл нового языка создаётся отдельно: `messages_<язык>.yml`.
@@ -167,7 +167,7 @@ Spigot/Paper по умолчанию удаляют предметы через 
 
 ## Поддержка
 
-Нашли ошибку или есть идея? Создайте [issue на GitHub](https://github.com/) или оставьте комментарий на странице Spigot. Укажите версию сервера, версию плагина и вывод консоли.
+Нашли ошибку или есть идея? Создайте [issue на GitHub](https://github.com/archpeck/delDropItems/issues) или оставьте комментарий на странице Spigot. Укажите версию сервера, версию плагина и вывод консоли.
 
 ## Лицензия
 

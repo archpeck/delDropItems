@@ -92,7 +92,9 @@ public class DdiCommand implements CommandExecutor, TabCompleter {
         if (sender.hasPermission("delDropItems.view-logs")) {
             sender.sendMessage(messages.get("help-logs", "§a/ddi view-logs - Show the last removals."));
         }
-        sender.sendMessage(messages.get("help-help", "§a/ddi help - Show this help."));
+        if (sender.hasPermission("delDropItems.help")) {
+            sender.sendMessage(messages.get("help-help", "§a/ddi help - Show this help."));
+        }
     }
 
     @Override

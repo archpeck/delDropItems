@@ -21,7 +21,14 @@ public class DropListener implements Listener {
         if (!settings.dropMessageAllow()) {
             return;
         }
+        if (settings.isWorldDisabled(event.getPlayer().getWorld().getName())) {
+            return;
+        }
+        String text = messages.get("drop-message", "");
+        if (text.isEmpty()) {
+            return;
+        }
         String name = event.getItemDrop().getItemStack().getType().name();
-        event.getPlayer().sendMessage(messages.get("drop-message", "").replace("%item_name%", name));
+        event.getPlayer().sendMessage(text.replace("%item_name%", name));
     }
 }

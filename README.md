@@ -2,7 +2,7 @@
 
 ![Java](https://img.shields.io/badge/Java-17-red?style=flat)
 ![Version](https://img.shields.io/badge/Version-v1.2.0-blue?style=flat)
-![Minecraft](https://img.shields.io/badge/Minecraft-1.12+-green?style=flat)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.17+-green?style=flat)
 
 [English](README.md) | [Русский](README_RU.md) <!--gh-->
 
@@ -24,7 +24,7 @@ DelDropItems automatically removes items lying on the ground after a set time. L
 
 ## Requirements
 
-- Spigot or Paper (or a fork of them), Minecraft 1.12 or newer
+- Spigot or Paper (or a fork of them), Minecraft 1.17 or newer (older versions are not supported)
 - Java 17 or newer
 - No other plugins are required
 
@@ -90,7 +90,7 @@ File: `plugins/DelDropItems/config.yml`. After editing, run `/ddi reload`.
 
 | Option | Default | Description |
 |---|---|---|
-| `item-removal-time` | `300` | Seconds an item may lie on the ground before it is removed. |
+| `item-removal-time` | `300` | Seconds an item may lie on the ground before it is removed. Minimum `1`. |
 | `only-player-dropped` | `true` | `true`: only items thrown by players (Q key or dragged out of the inventory). `false`: every item entity, including mob drops, broken blocks and death drops. |
 | `distance-player-to-object` | `0` | Distance in blocks. While a player is closer than this to an item, the item is **not** removed. `0` turns the check off. |
 | `ignored-materials` | `[]` | Materials that are never removed, e.g. `[DIAMOND, NETHERITE_INGOT, SHULKER_BOX]`. Use the names from the Spigot `Material` list. Unknown names are reported in the console. |
@@ -122,7 +122,7 @@ Colour codes: use `§` or `&`, for example `&a` for green and `&l` for bold.
 
 | Key | Used for | Placeholders |
 |---|---|---|
-| `prefix` | Prefix in front of command replies | |
+| `prefix` | Prefix in front of `no-permission`, `unknown-command`, `clear-message` and `logs-empty`. `broadcast-message`, `drop-message` and `reload-message` carry their own prefix in the text; change it there | |
 | `broadcast-message` | Periodic reminder | `%minutes%`, `%seconds%` |
 | `drop-message` | Message to the player who dropped an item | `%item_name%` |
 | `reload-message` | After `/ddi reload` | |
@@ -157,7 +157,7 @@ Check that: the item was thrown by a player (or `only-player-dropped` is `false`
 Spigot/Paper despawn items after 300 seconds by default, and other plugins may also clean items. Check `spigot.yml` and your other cleanup plugins.
 
 **I get "Unknown material" in the console.**
-A name in `ignored-materials` does not exist in your Minecraft version. Use uppercase Spigot names such as `NETHERITE_INGOT`.
+A name in `ignored-materials` does not exist in your Minecraft version. Names are not case-sensitive (`diamond` works too); check the spelling against the Spigot `Material` list for your server version, e.g. `NETHERITE_INGOT` exists only since 1.16.
 
 **Messages are not in my language.**
 Check `language` in `config.yml` and run `/ddi reload`. If you changed the language after editing a message file, the new language's file is created separately: `messages_<language>.yml`.
@@ -167,7 +167,7 @@ Check the console for the exact error. Make sure the server runs Java 17 or newe
 
 ## Support
 
-Found a bug or have an idea? Open an [issue on GitHub](https://github.com/) or leave a comment on the Spigot page. Please include your server version, the plugin version and the console output.
+Found a bug or have an idea? Open an [issue on GitHub](https://github.com/archpeck/delDropItems/issues) or leave a comment on the Spigot page. Please include your server version, the plugin version and the console output.
 
 ## License
 

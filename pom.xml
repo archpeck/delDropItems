@@ -12,8 +12,6 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <spigot.version>1.12</spigot.version>
-    <spigot.max.version>1.21.3</spigot.max.version>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
@@ -29,7 +27,7 @@
     <dependency>
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot-api</artifactId>
-      <version>1.16.5-R0.1-SNAPSHOT</version>
+      <version>1.17.1-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -56,7 +54,7 @@
             <manifest>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              <mainClass>plugin.DelDropItems.Main</mainClass> <!-- Замените на ваш главный класс -->
+              <mainClass>plugin.DelDropItems.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

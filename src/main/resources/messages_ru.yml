@@ -12,7 +12,7 @@
 
 
 
-broadcast-message: "[§aDelDropItems§f] §cУдаление выброшенных предметов произойдет через §l%minutes% минут§r!" # Периодическое напоминание. Плейсхолдеры: %minutes%, %seconds%
+broadcast-message: "[§aDelDropItems§f] §cУдаление выброшенных предметов произойдет через §l%minutes% мин.§r!" # Периодическое напоминание. Плейсхолдеры: %minutes%, %seconds%
 
 reload-message: "[§aDelDropItems§f] §eКонфигурация плагина успешно перезагружена!" # Сообщение для перезагрузки плагина
 

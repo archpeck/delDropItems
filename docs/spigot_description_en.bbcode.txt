@@ -21,7 +21,7 @@ DelDropItems automatically removes items lying on the ground after a set time. L
 [B][SIZE=5]Requirements[/SIZE][/B]
 
 [LIST]
-[*]Spigot or Paper (or a fork of them), Minecraft 1.12 or newer
+[*]Spigot or Paper (or a fork of them), Minecraft 1.17 or newer (older versions are not supported)
 [*]Java 17 or newer
 [*]No other plugins are required
 [/LIST]
@@ -89,7 +89,7 @@ File: [ICODE]plugins/DelDropItems/config.yml[/ICODE]. After editing, run [ICODE]
 [B][SIZE=4]Removal[/SIZE][/B]
 
 [LIST]
-[*][B]item-removal-time[/B] — Default: [ICODE]300[/ICODE] — Seconds an item may lie on the ground before it is removed.
+[*][B]item-removal-time[/B] — Default: [ICODE]300[/ICODE] — Seconds an item may lie on the ground before it is removed. Minimum [ICODE]1[/ICODE].
 [*][B]only-player-dropped[/B] — Default: [ICODE]true[/ICODE] — [ICODE]true[/ICODE]: only items thrown by players (Q key or dragged out of the inventory). [ICODE]false[/ICODE]: every item entity, including mob drops, broken blocks and death drops.
 [*][B]distance-player-to-object[/B] — Default: [ICODE]0[/ICODE] — Distance in blocks. While a player is closer than this to an item, the item is [B]not[/B] removed. [ICODE]0[/ICODE] turns the check off.
 [*][B]ignored-materials[/B] — Default: (empty) — Materials that are never removed, e.g. [ICODE][DIAMOND, NETHERITE_INGOT, SHULKER_BOX][/ICODE]. Use the names from the Spigot [ICODE]Material[/ICODE] list. Unknown names are reported in the console.
@@ -123,7 +123,7 @@ Message files are stored in [ICODE]plugins/DelDropItems/messages/messages_<langu
 Colour codes: use [ICODE]§[/ICODE] or [ICODE]&[/ICODE], for example [ICODE]&a[/ICODE] for green and [ICODE]&l[/ICODE] for bold.
 
 [LIST]
-[*][B]prefix[/B] — Prefix in front of command replies
+[*][B]prefix[/B] — Prefix in front of [ICODE]no-permission[/ICODE], [ICODE]unknown-command[/ICODE], [ICODE]clear-message[/ICODE] and [ICODE]logs-empty[/ICODE]. [ICODE]broadcast-message[/ICODE], [ICODE]drop-message[/ICODE] and [ICODE]reload-message[/ICODE] carry their own prefix in the text; change it there
 [*][B]broadcast-message[/B] — Periodic reminder — Placeholders: [ICODE]%minutes%[/ICODE], [ICODE]%seconds%[/ICODE]
 [*][B]drop-message[/B] — Message to the player who dropped an item — Placeholders: [ICODE]%item_name%[/ICODE]
 [*][B]reload-message[/B] — After [ICODE]/ddi reload[/ICODE]
@@ -159,7 +159,7 @@ Check that: the item was thrown by a player (or [ICODE]only-player-dropped[/ICOD
 Spigot/Paper despawn items after 300 seconds by default, and other plugins may also clean items. Check [ICODE]spigot.yml[/ICODE] and your other cleanup plugins.
 
 [B]I get "Unknown material" in the console.[/B]
-A name in [ICODE]ignored-materials[/ICODE] does not exist in your Minecraft version. Use uppercase Spigot names such as [ICODE]NETHERITE_INGOT[/ICODE].
+A name in [ICODE]ignored-materials[/ICODE] does not exist in your Minecraft version. Names are not case-sensitive ([ICODE]diamond[/ICODE] works too); check the spelling against the Spigot [ICODE]Material[/ICODE] list for your server version, e.g. [ICODE]NETHERITE_INGOT[/ICODE] exists only since 1.16.
 
 [B]Messages are not in my language.[/B]
 Check [ICODE]language[/ICODE] in [ICODE]config.yml[/ICODE] and run [ICODE]/ddi reload[/ICODE]. If you changed the language after editing a message file, the new language's file is created separately: [ICODE]messages_<language>.yml[/ICODE].
@@ -169,7 +169,7 @@ Check the console for the exact error. Make sure the server runs Java 17 or newe
 
 [B][SIZE=5]Support[/SIZE][/B]
 
-Found a bug or have an idea? Open an [URL='https://github.com/']issue on GitHub[/URL] or leave a comment on the Spigot page. Please include your server version, the plugin version and the console output.
+Found a bug or have an idea? Open an [URL='https://github.com/archpeck/delDropItems/issues']issue on GitHub[/URL] or leave a comment on the Spigot page. Please include your server version, the plugin version and the console output.
 
 [B][SIZE=5]License[/SIZE][/B]
 
