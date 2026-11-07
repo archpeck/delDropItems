@@ -1,0 +1,41 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §c投掷物将在投掷后§l%minutes%分钟内被删除§r！" # 广播消息用于物品删除
+
+reload-message: "[§aDelDropItems§f] §e插件配置已成功重新加载！" # 插件重新加载消息
+
+drop-message: "[§aDelDropItems§f] §e您已丢弃：%item_name%！" # 玩家丢弃物品消息
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§c你没有权限使用此命令。"
+unknown-command: "§c未知子命令。请使用 /ddi help。"
+clear-message: "§e已删除物品：§f%count%"
+logs-header: "§6=== 最近的删除记录 ==="
+logs-empty: "§e日志为空。"
+help-header: "§6=== DelDropItems 命令 ==="
+help-reload: "§a/ddi reload - 重新加载插件配置。"
+help-clear: "§a/ddi clear - 立即删除符合条件的掉落物。"
+help-logs: "§a/ddi view-logs - 显示最近的删除记录。"
+help-help: "§a/ddi help - 显示此帮助。"
+
+# 控制台和日志文本
+console-enabled: "DelDropItems v%version% 已启用。帮助：/ddi help。"
+console-unknown-material: "ignored-materials：未知材料 '%name%'"
+console-language-missing: "未找到语言 '%language%'，将使用英语。"
+console-folder-error: "无法创建消息文件夹。"
+console-file-error: "无法创建消息文件：%error%"
+console-log-error: "无法写入删除日志：%error%"
+log-removal: "[%time%] 物品：%item% x%amount%，投掷者：%player%，世界：%world% (%x%, %y%, %z%)，已删除。"
+log-unknown-player: "未知"

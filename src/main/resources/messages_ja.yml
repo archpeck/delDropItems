@@ -1,0 +1,42 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cアイテムは投棄後§l%minutes%分で削除されます§r！" # アイテム削除のブロードキャストメッセージ
+
+reload-message: "[§aDelDropItems§f] §eプラグインの設定が正常にリロードされました！" # プラグインリロードメッセージ
+
+drop-message: "[§aDelDropItems§f] §eあなたは捨てました：%item_name%！" # プレイヤーがアイテムを捨てた際のメッセージ
+
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§cこのコマンドを使用する権限がありません。"
+unknown-command: "§c不明なサブコマンドです。/ddi help を使用してください。"
+clear-message: "§e削除したアイテム: §f%count%"
+logs-header: "§6=== 最近の削除 ==="
+logs-empty: "§eログは空です。"
+help-header: "§6=== DelDropItems コマンド ==="
+help-reload: "§a/ddi reload - プラグインの設定を再読み込みします。"
+help-clear: "§a/ddi clear - 対象のアイテムを今すぐ削除します。"
+help-logs: "§a/ddi view-logs - 最近の削除を表示します。"
+help-help: "§a/ddi help - このヘルプを表示します。"
+
+# コンソールとログのテキスト
+console-enabled: "DelDropItems v%version% を有効化しました。ヘルプ: /ddi help"
+console-unknown-material: "ignored-materials: 不明なマテリアル '%name%'"
+console-language-missing: "言語 '%language%' が見つからないため、英語を使用します。"
+console-folder-error: "メッセージフォルダを作成できませんでした。"
+console-file-error: "メッセージファイルを作成できませんでした: %error%"
+console-log-error: "削除ログを書き込めませんでした: %error%"
+log-removal: "[%time%] アイテム: %item%x%amount%、投棄したプレイヤー: %player%、ワールド: %world% (%x%, %y%, %z%) を削除しました。"
+log-unknown-player: "不明"

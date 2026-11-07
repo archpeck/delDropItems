@@ -1,0 +1,21 @@
+# Build
+target/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / local
+*.log
+.classpath
+.project
+.settings/

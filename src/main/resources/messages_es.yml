@@ -1,0 +1,41 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cLa eliminación de los objetos tirados se realizará en §l%minutes% minutos después de tirarlos§r !" # Mensaje de difusión para la eliminación de objetos
+
+reload-message: "[§aDelDropItems§f] §eLa configuración del plugin se ha recargado con éxito!" # Mensaje de recarga del plugin
+
+drop-message: "[§aDelDropItems§f] §eHas tirado: %item_name%!" # Mensaje para el objeto tirado por el jugador
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§cNo tienes permiso para usar este comando."
+unknown-command: "§cSubcomando desconocido. Usa /ddi help."
+clear-message: "§eObjetos eliminados: §f%count%"
+logs-header: "§6=== Últimas eliminaciones ==="
+logs-empty: "§eEl registro está vacío."
+help-header: "§6=== Comandos de DelDropItems ==="
+help-reload: "§a/ddi reload - Recargar la configuración del plugin."
+help-clear: "§a/ddi clear - Eliminar ahora los objetos que correspondan."
+help-logs: "§a/ddi view-logs - Mostrar las últimas eliminaciones."
+help-help: "§a/ddi help - Mostrar esta ayuda."
+
+# Textos de la consola y del registro
+console-enabled: "DelDropItems v%version% activado. Ayuda: /ddi help."
+console-unknown-material: "ignored-materials: material desconocido '%name%'"
+console-language-missing: "Idioma '%language%' no encontrado, se usa inglés."
+console-folder-error: "No se pudo crear la carpeta de mensajes."
+console-file-error: "No se pudo crear el archivo de mensajes: %error%"
+console-log-error: "No se pudo escribir el registro de eliminaciones: %error%"
+log-removal: "[%time%] Objeto: %item% x%amount%, tirado por: %player%, mundo: %world% (%x%, %y%, %z%) eliminado."
+log-unknown-player: "desconocido"

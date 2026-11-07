@@ -1,0 +1,36 @@
+name: DelDropItems
+version: 1.2.0
+main: plugin.DelDropItems.Main
+api-version: 1.13
+commands:
+  ddi:
+    description: "Main command of the plugin."
+    usage: "/ddi <help|reload|clear|view-logs>"
+    aliases: [ "delDropItems" ]
+    permission: "delDropItems.use"
+    permission-message: "You do not have permission to use this command."
+permissions:
+  delDropItems.use:
+    description: "Permission to use /ddi."
+    default: op
+  delDropItems.reload:
+    description: "Permission to reload the plugin configuration."
+    default: op
+  delDropItems.help:
+    description: "Permission to view the plugin commands."
+    default: op
+  delDropItems.clear:
+    description: "Permission to remove dropped items immediately."
+    default: op
+  delDropItems.view-logs:
+    description: "Permission to view item deletion logs."
+    default: op
+  delDropItems.*:
+    description: "All DelDropItems permissions."
+    default: op
+    children:
+      delDropItems.use: true
+      delDropItems.reload: true
+      delDropItems.help: true
+      delDropItems.clear: true
+      delDropItems.view-logs: true

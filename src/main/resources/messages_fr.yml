@@ -1,0 +1,41 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cLa suppression des objets jetés aura lieu dans §l%minutes% minutes après le largage§r !" # Message de diffusion pour la suppression d'objet
+
+reload-message: "[§aDelDropItems§f] §eLa configuration du plugin a été rechargée avec succès !" # Message de rechargement du plugin
+
+drop-message: "[§aDelDropItems§f] §eVous avez jeté : %item_name% !" # Message pour un objet jeté par le joueur
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§cVous n'avez pas la permission d'utiliser cette commande."
+unknown-command: "§cSous-commande inconnue. Utilisez /ddi help."
+clear-message: "§eObjets supprimés : §f%count%"
+logs-header: "§6=== Dernières suppressions ==="
+logs-empty: "§eLe journal est vide."
+help-header: "§6=== Commandes de DelDropItems ==="
+help-reload: "§a/ddi reload - Recharger la configuration du plugin."
+help-clear: "§a/ddi clear - Supprimer immédiatement les objets concernés."
+help-logs: "§a/ddi view-logs - Afficher les dernières suppressions."
+help-help: "§a/ddi help - Afficher cette aide."
+
+# Textes de la console et du journal
+console-enabled: "DelDropItems v%version% activé. Aide : /ddi help."
+console-unknown-material: "ignored-materials : matériau inconnu '%name%'"
+console-language-missing: "Langue '%language%' introuvable, utilisation de l'anglais."
+console-folder-error: "Impossible de créer le dossier des messages."
+console-file-error: "Impossible de créer le fichier de messages : %error%"
+console-log-error: "Impossible d'écrire le journal des suppressions : %error%"
+log-removal: "[%time%] Objet : %item% x%amount%, jeté par : %player%, monde : %world% (%x%, %y%, %z%) supprimé."
+log-unknown-player: "inconnu"

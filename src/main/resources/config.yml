@@ -1,0 +1,74 @@
+ # $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+ # $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+ # $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+ # $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+ # $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+ # $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+ # $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+ # \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+ #                                                       $$ |
+ #                                                       $$ |
+ #                                                       \__|
+
+  ##################################################
+  #                    GENERAL                     #
+  ##################################################
+
+# Language of the plugin texts: chat messages, console and the removal log.
+# Available: en, ru, fr, de, es, it, cn, ja
+# The texts are stored in plugins/DelDropItems/messages/messages_<language>.yml
+# and can be edited freely. Apply changes with /ddi reload.
+language: "en"
+
+  ##################################################
+  #                    REMOVAL                     #
+  ##################################################
+
+# How many seconds an item may lie on the ground before it is removed.
+# Note: Spigot/Paper remove items on their own after 300 seconds.
+# To use a value above 300, also raise item-despawn-rate in spigot.yml.
+item-removal-time: 300
+
+# true  = remove only items thrown by players (Q key, dragged out of the inventory)
+# false = remove every item on the ground (mob drops, broken blocks, death drops)
+only-player-dropped: true
+
+# Distance in blocks. An item is NOT removed while a player stands closer than this.
+# 0 = turn the check off (items are removed no matter who is nearby).
+distance-player-to-object: 0
+
+# Items of these materials are never removed.
+# Example: [DIAMOND, NETHERITE_INGOT, SHULKER_BOX]
+# Names must be written like in the Spigot "Material" list.
+ignored-materials: []
+
+# true = items with a custom name (for example renamed in an anvil) are never removed.
+ignore-named-items: false
+
+# Worlds where the plugin does nothing. Names are case-sensitive.
+# Example: [world_nether, world_the_end]
+disabled-worlds: []
+
+  ##################################################
+  #                    MESSAGES                    #
+  ##################################################
+
+# Tell the player what they dropped.
+drop-message-allow: true
+
+# Send a message after /ddi reload.
+reload-message-allow: true
+
+# Periodically send a reminder to all players in chat.
+broadcast-message-allow: true
+
+# Seconds between reminders. 0 = off.
+broadcast-interval: 300
+
+  ##################################################
+  #                    LOGGING                     #
+  ##################################################
+
+# Write every removed item to plugins/DelDropItems/logs/item_removal_log.txt
+# The last lines can be viewed in game with /ddi view-logs.
+log-removals: true

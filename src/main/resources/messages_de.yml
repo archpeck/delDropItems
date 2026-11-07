@@ -1,0 +1,41 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cDas Entfernen von geworfenen Gegenständen erfolgt in §l%minutes% Minuten nach dem Wurf§r !" # Broadcast-Nachricht für das Entfernen von Gegenständen
+
+reload-message: "[§aDelDropItems§f] §eDie Plugin-Konfiguration wurde erfolgreich neu geladen!" # Nachricht für das Neuladen des Plugins
+
+drop-message: "[§aDelDropItems§f] §eDu hast folgendes geworfen: %item_name%!" # Nachricht für den Wurf eines Gegenstands durch den Spieler
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§cDu hast keine Berechtigung für diesen Befehl."
+unknown-command: "§cUnbekannter Unterbefehl. Nutze /ddi help."
+clear-message: "§eEntfernte Gegenstände: §f%count%"
+logs-header: "§6=== Letzte Entfernungen ==="
+logs-empty: "§eDas Protokoll ist leer."
+help-header: "§6=== DelDropItems-Befehle ==="
+help-reload: "§a/ddi reload - Plugin-Konfiguration neu laden."
+help-clear: "§a/ddi clear - Betroffene Gegenstände sofort entfernen."
+help-logs: "§a/ddi view-logs - Letzte Entfernungen anzeigen."
+help-help: "§a/ddi help - Diese Hilfe anzeigen."
+
+# Texte für Konsole und Protokoll
+console-enabled: "DelDropItems v%version% aktiviert. Hilfe: /ddi help."
+console-unknown-material: "ignored-materials: unbekanntes Material '%name%'"
+console-language-missing: "Sprache '%language%' nicht gefunden, Englisch wird verwendet."
+console-folder-error: "Der Nachrichtenordner konnte nicht erstellt werden."
+console-file-error: "Die Nachrichtendatei konnte nicht erstellt werden: %error%"
+console-log-error: "Das Entfernungsprotokoll konnte nicht geschrieben werden: %error%"
+log-removal: "[%time%] Gegenstand: %item% x%amount%, geworfen von: %player%, Welt: %world% (%x%, %y%, %z%) entfernt."
+log-unknown-player: "unbekannt"

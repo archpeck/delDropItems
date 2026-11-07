@@ -1,0 +1,41 @@
+# $$$$$$$\            $$\ $$$$$$$\                                $$$$$$\   $$\
+# $$  __$$\           $$ |$$  __$$\                               \_$$  _|  $$ |
+# $$ |  $$ | $$$$$$\  $$ |$$ |  $$ | $$$$$$\   $$$$$$\   $$$$$$\    $$ |  $$$$$$\    $$$$$$\  $$$$$$\$$$$\   $$$$$$$\
+# $$ |  $$ |$$  __$$\ $$ |$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\   $$ |  \_$$  _|  $$  __$$\ $$  _$$  _$$\ $$  _____|
+# $$ |  $$ |$$$$$$$$ |$$ |$$ |  $$ |$$ |  \__|$$ /  $$ |$$ /  $$ |  $$ |    $$ |    $$$$$$$$ |$$ / $$ / $$ |\$$$$$$\
+# $$ |  $$ |$$   ____|$$ |$$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |    $$ |$$\ $$   ____|$$ | $$ | $$ | \____$$\
+# $$$$$$$  |\$$$$$$$\ $$ |$$$$$$$  |$$ |      \$$$$$$  |$$$$$$$  |$$$$$$\   \$$$$  |\$$$$$$$\ $$ | $$ | $$ |$$$$$$$  |
+# \_______/  \_______|\__|\_______/ \__|       \______/ $$  ____/ \______|   \____/  \_______|\__| \__| \__|\_______/
+#                                                       $$ |
+#                                                       $$ |
+#                                                       \__|
+
+
+
+broadcast-message: "[§aDelDropItems§f] §cItem removal will occur in §l%minutes% minutes§r!" # Periodic reminder. Placeholders: %minutes%, %seconds%
+
+reload-message: "[§aDelDropItems§f] §ePlugin configuration has been successfully reloaded!" # Reload message
+
+drop-message: "[§aDelDropItems§f] §eYou dropped: %item_name%!" # Drop message for players
+
+prefix: "[§aDelDropItems§f] "
+no-permission: "§cYou do not have permission for this command."
+unknown-command: "§cUnknown subcommand. Use /ddi help."
+clear-message: "§eRemoved items: §f%count%"
+logs-header: "§6=== Last removals ==="
+logs-empty: "§eThe log is empty."
+help-header: "§6=== DelDropItems Commands ==="
+help-reload: "§a/ddi reload - Reload the plugin configuration."
+help-clear: "§a/ddi clear - Remove all matching dropped items right now."
+help-logs: "§a/ddi view-logs - Show the last removals."
+help-help: "§a/ddi help - Show this help."
+
+# Console and log texts
+console-enabled: "DelDropItems v%version% enabled. Use /ddi help."
+console-unknown-material: "ignored-materials: unknown material '%name%'"
+console-language-missing: "Language '%language%' not found, using English."
+console-folder-error: "Could not create the messages folder."
+console-file-error: "Could not create the message file: %error%"
+console-log-error: "Could not write the removal log: %error%"
+log-removal: "[%time%] Item: %item% x%amount%, dropped by: %player%, world: %world% (%x%, %y%, %z%) has been removed."
+log-unknown-player: "unknown"

@@ -1,0 +1,176 @@
+[B][SIZE=6]DelDropItems[/SIZE][/B]
+
+DelDropItems автоматически удаляет предметы, лежащие на земле, через заданное время. Меньше мусора в мире и меньше нагрузки на сервер. Плагин лёгкий, не требует других плагинов и настраивается одним файлом.
+
+[B][SIZE=5]Возможности[/SIZE][/B]
+
+[LIST]
+[*]Автоматическое удаление выброшенных предметов через настраиваемое время
+[*]Режим очистки: только предметы, выброшенные игроками, или любые предметы в мире
+[*]Список исключений: выбранные материалы (алмазы, шалкеры и т. д.) никогда не удаляются
+[*]Опция: не удалять предметы с кастомным названием
+[*]Опция: не удалять предметы, пока рядом находится игрок
+[*]Отключение плагина в выбранных мирах
+[*]Периодическое напоминание в чат с плейсхолдерами [ICODE]%minutes%[/ICODE] / [ICODE]%seconds%[/ICODE]
+[*]Сообщение игроку о том, что он выбросил
+[*]Журнал удалений: кто, что, где и когда выбросил
+[*]Мгновенная очистка командой [ICODE]/ddi clear[/ICODE]
+[*]Сообщения на 8 языках (английский, русский, французский, немецкий, испанский, итальянский, китайский, японский), все тексты можно править
+[/LIST]
+
+[B][SIZE=5]Требования[/SIZE][/B]
+
+[LIST]
+[*]Spigot или Paper (или их форк), Minecraft 1.12 и новее
+[*]Java 17 или новее
+[*]Другие плагины не нужны
+[/LIST]
+
+[B][SIZE=5]Установка[/SIZE][/B]
+
+[LIST=1]
+[*]Скачайте последний [ICODE]DelDropItems-x.y.z.jar[/ICODE].
+[*]Положите файл в папку [ICODE]plugins[/ICODE] вашего сервера.
+[*]Запустите (или перезапустите) сервер. Плагин создаст папку [ICODE]plugins/DelDropItems/[/ICODE] с файлом [ICODE]config.yml[/ICODE] и папкой [ICODE]messages[/ICODE].
+[*]Откройте [ICODE]plugins/DelDropItems/config.yml[/ICODE] и настройте его (см. раздел «Настройка»).
+[*]Примените изменения без перезапуска командой [ICODE]/ddi reload[/ICODE].
+[/LIST]
+
+Чтобы обновить плагин, остановите сервер, замените старый JAR новым и запустите сервер снова. Ваш [ICODE]config.yml[/ICODE] и файлы сообщений сохранятся. Новые опции, которых нет в вашем старом [ICODE]config.yml[/ICODE], используют значения по умолчанию; если хотите их изменить, скопируйте их из нового конфига по умолчанию.
+
+[B][SIZE=5]Быстрый старт[/SIZE][/B]
+
+Настройки по умолчанию работают сразу: предметы, выброшенные игроками, удаляются через 5 минут, а напоминание в чат приходит каждые 5 минут. Типичная настройка выглядит так:
+
+[CODE]
+language: "ru"
+item-removal-time: 120
+only-player-dropped: true
+ignored-materials: [DIAMOND, NETHERITE_INGOT, SHULKER_BOX]
+disabled-worlds: [world_nether]
+[/CODE]
+
+[B][SIZE=5]Команды[/SIZE][/B]
+
+[LIST]
+[*][B]/ddi help[/B] — Показать список доступных вам команд — [ICODE]delDropItems.help[/ICODE]
+[*][B]/ddi reload[/B] — Перезагрузить [ICODE]config.yml[/ICODE] и файл сообщений, перезапустить таймеры — [ICODE]delDropItems.reload[/ICODE]
+[*][B]/ddi clear[/B] — Удалить все подходящие предметы прямо сейчас, не учитывая их возраст — [ICODE]delDropItems.clear[/ICODE]
+[*][B]/ddi view-logs[/B] — Показать последние 10 удалений — [ICODE]delDropItems.view-logs[/ICODE]
+[/LIST]
+
+Работает и псевдоним [ICODE]/delDropItems[/ICODE].
+
+[B][SIZE=5]Права[/SIZE][/B]
+
+По умолчанию все права выданы операторам.
+
+[LIST]
+[*][B]delDropItems.use[/B] — Разрешает пользоваться командой [ICODE]/ddi[/ICODE] вообще
+[*][B]delDropItems.help[/B] — [ICODE]/ddi help[/ICODE]
+[*][B]delDropItems.reload[/B] — [ICODE]/ddi reload[/ICODE]
+[*][B]delDropItems.clear[/B] — [ICODE]/ddi clear[/ICODE]
+[*][B]delDropItems.view-logs[/B] — [ICODE]/ddi view-logs[/ICODE]
+[*][B]delDropItems.*[/B] — Все права выше
+[/LIST]
+
+Игроку нужны оба права: [ICODE]delDropItems.use[/ICODE] и право подкоманды. Пример для LuckPerms: [ICODE]/lp user Steve permission set delDropItems.use true[/ICODE] и [ICODE]/lp user Steve permission set delDropItems.clear true[/ICODE].
+
+[B][SIZE=5]Настройка[/SIZE][/B]
+
+Файл: [ICODE]plugins/DelDropItems/config.yml[/ICODE]. После правки выполните [ICODE]/ddi reload[/ICODE].
+
+[B][SIZE=4]Общее[/SIZE][/B]
+
+[LIST]
+[*][B]language[/B] — По умолчанию: [ICODE]en[/ICODE] — Язык сообщений плагина: [ICODE]en[/ICODE], [ICODE]ru[/ICODE], [ICODE]fr[/ICODE], [ICODE]de[/ICODE], [ICODE]es[/ICODE], [ICODE]it[/ICODE], [ICODE]cn[/ICODE], [ICODE]ja[/ICODE]. Влияет на сообщения в чате, вывод в консоль и журнал удалений, но не на интерфейс Minecraft. Неизвестное значение заменяется английским.
+[/LIST]
+
+[B][SIZE=4]Удаление[/SIZE][/B]
+
+[LIST]
+[*][B]item-removal-time[/B] — По умолчанию: [ICODE]300[/ICODE] — Сколько секунд предмет может лежать на земле до удаления.
+[*][B]only-player-dropped[/B] — По умолчанию: [ICODE]true[/ICODE] — [ICODE]true[/ICODE]: только предметы, выброшенные игроками (клавиша Q или вытащенные из инвентаря). [ICODE]false[/ICODE]: любые предметы, включая дроп с мобов, сломанных блоков и после смерти.
+[*][B]distance-player-to-object[/B] — По умолчанию: [ICODE]0[/ICODE] — Расстояние в блоках. Пока рядом с предметом (ближе этого значения) есть игрок, предмет [B]не[/B] удаляется. [ICODE]0[/ICODE] отключает проверку.
+[*][B]ignored-materials[/B] — По умолчанию: (empty) — Материалы, которые никогда не удаляются, например [ICODE][DIAMOND, NETHERITE_INGOT, SHULKER_BOX][/ICODE]. Используйте названия из списка [ICODE]Material[/ICODE] в Spigot. Неизвестные названия выводятся в консоль.
+[*][B]ignore-named-items[/B] — По умолчанию: [ICODE]false[/ICODE] — [ICODE]true[/ICODE]: предметы с кастомным названием (например, переименованные на наковальне) никогда не удаляются.
+[*][B]disabled-worlds[/B] — По умолчанию: (empty) — Названия миров, где плагин ничего не делает, например [ICODE][world_nether, world_the_end][/ICODE]. Регистр важен.
+[/LIST]
+
+[B][SIZE=4]Сообщения и журнал[/SIZE][/B]
+
+[LIST]
+[*][B]drop-message-allow[/B] — По умолчанию: [ICODE]true[/ICODE] — Отправлять игроку сообщение, когда он выбрасывает предмет.
+[*][B]reload-message-allow[/B] — По умолчанию: [ICODE]true[/ICODE] — Отправлять сообщение после [ICODE]/ddi reload[/ICODE].
+[*][B]broadcast-message-allow[/B] — По умолчанию: [ICODE]true[/ICODE] — Периодически отправлять напоминание всем игрокам.
+[*][B]broadcast-interval[/B] — По умолчанию: [ICODE]300[/ICODE] — Секунд между напоминаниями. [ICODE]0[/ICODE] отключает их.
+[*][B]log-removals[/B] — По умолчанию: [ICODE]true[/ICODE] — Записывать каждое удаление в [ICODE]plugins/DelDropItems/logs/item_removal_log.txt[/ICODE].
+[/LIST]
+
+[B][SIZE=4]Что полезно знать[/SIZE][/B]
+
+[LIST]
+[*][B]Деспавн сервера.[/B] Spigot и Paper сами удаляют предметы через 6000 тиков (300 секунд). Значения [ICODE]item-removal-time[/ICODE] больше [ICODE]300[/ICODE] сработают, только если вы также увеличите [ICODE]item-despawn-rate[/ICODE] в [ICODE]spigot.yml[/ICODE].
+[*][B]Только загруженные чанки.[/B] Предметы «стареют» и удаляются только в загруженных чанках.
+[*][B]Что значит «выброшен игроком».[/B] Плагин использует данные о том, кто бросил предмет, которые хранятся в самом предмете. У предметов от мобов, блоков, воронок или команд такого игрока нет, поэтому при [ICODE]only-player-dropped: true[/ICODE] они не трогаются.
+[*][B][ICODE]/ddi clear[/ICODE][/B] не учитывает возраст и близость игроков, но учитывает [ICODE]only-player-dropped[/ICODE], [ICODE]ignored-materials[/ICODE], [ICODE]ignore-named-items[/ICODE] и [ICODE]disabled-worlds[/ICODE].
+[/LIST]
+
+[B][SIZE=5]Сообщения[/SIZE][/B]
+
+Файлы сообщений лежат в [ICODE]plugins/DelDropItems/messages/messages_<язык>.yml[/ICODE]. Они создаются из встроенных шаблонов при первом использовании языка и больше не перезаписываются, поэтому их можно свободно править. Если какого-то ключа в вашем файле нет, используется встроенный текст.
+
+Цветовые коды: используйте [ICODE]§[/ICODE] или [ICODE]&[/ICODE], например [ICODE]&a[/ICODE] для зелёного и [ICODE]&l[/ICODE] для жирного.
+
+[LIST]
+[*][B]prefix[/B] — Префикс перед ответами на команды
+[*][B]broadcast-message[/B] — Периодическое напоминание — Плейсхолдеры: [ICODE]%minutes%[/ICODE], [ICODE]%seconds%[/ICODE]
+[*][B]drop-message[/B] — Сообщение игроку, выбросившему предмет — Плейсхолдеры: [ICODE]%item_name%[/ICODE]
+[*][B]reload-message[/B] — После [ICODE]/ddi reload[/ICODE]
+[*][B]clear-message[/B] — После [ICODE]/ddi clear[/ICODE] — Плейсхолдеры: [ICODE]%count%[/ICODE]
+[*][B]no-permission[/B] — Нет прав
+[*][B]unknown-command[/B] — Неизвестная подкоманда
+[*][B]logs-header, logs-empty[/B] — Вывод [ICODE]/ddi view-logs[/ICODE]
+[*][B]help-header, help-reload, help-clear, help-logs, help-help[/B] — Вывод [ICODE]/ddi help[/ICODE]
+[*][B]console-enabled[/B] — Строка в консоли при запуске — Плейсхолдеры: [ICODE]%version%[/ICODE]
+[*][B]console-unknown-material, console-language-missing, console-folder-error, console-file-error, console-log-error[/B] — Предупреждения и ошибки в консоли — Плейсхолдеры: [ICODE]%name%[/ICODE], [ICODE]%language%[/ICODE], [ICODE]%error%[/ICODE]
+[*][B]log-removal[/B] — Одна строка журнала удалений — Плейсхолдеры: [ICODE]%time%[/ICODE], [ICODE]%item%[/ICODE], [ICODE]%amount%[/ICODE], [ICODE]%player%[/ICODE], [ICODE]%world%[/ICODE], [ICODE]%x%[/ICODE], [ICODE]%y%[/ICODE], [ICODE]%z%[/ICODE]
+[*][B]log-unknown-player[/B] — Имя в журнале, если бросивший неизвестен
+[/LIST]
+
+[ICODE]%minutes%[/ICODE] — время удаления в целых минутах (не меньше 1). Если время удаления меньше минуты, используйте [ICODE]%seconds%[/ICODE].
+
+[B][SIZE=5]Журнал удалений[/SIZE][/B]
+
+Если включён [ICODE]log-removals[/ICODE], каждый удалённый предмет дописывается в [ICODE]plugins/DelDropItems/logs/item_removal_log.txt[/ICODE]:
+
+[CODE]
+[2026-11-07 18:42:10] Предмет: DIAMOND x3, выбросил: Steve, мир: world (120, 64, -45) удалён.
+[/CODE]
+
+Журнал пишется на языке из [ICODE]language[/ICODE]. Если бросивший игрок неизвестен, вместо имени пишется «неизвестен» (на выбранном языке). Если игрок не в сети, пишется его UUID. Последние 10 строк доступны в игре командой [ICODE]/ddi view-logs[/ICODE].
+
+[B][SIZE=5]Частые вопросы[/SIZE][/B]
+
+[B]Предметы не удаляются.[/B]
+Проверьте: предмет выброшен игроком (или [ICODE]only-player-dropped[/ICODE] равен [ICODE]false[/ICODE]); его материала нет в [ICODE]ignored-materials[/ICODE]; мира нет в [ICODE]disabled-worlds[/ICODE]; рядом нет игрока ближе [ICODE]distance-player-to-object[/ICODE]; предмет лежит в загруженном чанке; прошло достаточно времени.
+
+[B]Предметы исчезают быстрее, чем [ICODE]item-removal-time[/ICODE].[/B]
+Spigot/Paper по умолчанию удаляют предметы через 300 секунд, и их могут чистить другие плагины. Проверьте [ICODE]spigot.yml[/ICODE] и другие плагины очистки.
+
+[B]В консоли пишет «Unknown material».[/B]
+Название в [ICODE]ignored-materials[/ICODE] не существует в вашей версии Minecraft. Используйте названия Spigot в верхнем регистре, например [ICODE]NETHERITE_INGOT[/ICODE].
+
+[B]Сообщения не на моём языке.[/B]
+Проверьте [ICODE]language[/ICODE] в [ICODE]config.yml[/ICODE] и выполните [ICODE]/ddi reload[/ICODE]. Если вы сменили язык после правки файла сообщений, файл нового языка создаётся отдельно: [ICODE]messages_<язык>.yml[/ICODE].
+
+[B]Плагин не загружается.[/B]
+Посмотрите точную ошибку в консоли. Убедитесь, что сервер работает на Java 17 или новее.
+
+[B][SIZE=5]Поддержка[/SIZE][/B]
+
+Нашли ошибку или есть идея? Создайте [URL='https://github.com/']issue на GitHub[/URL] или оставьте комментарий на странице Spigot. Укажите версию сервера, версию плагина и вывод консоли.
+
+[B][SIZE=5]Лицензия[/SIZE][/B]
+
+См. файл LICENSE.
